@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version gvimrc file.
 " 日本語版のデフォルトGUI設定ファイル(gvimrc) - Vim7用試作
 "
-" Last Change: 24-Jul-2014.
+" Last Change: 05-Feb-2017.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -130,7 +130,7 @@ set nomousefocus
 " 入力時にマウスポインタを隠す (nomousehide:隠さない)
 set mousehide
 " ビジュアル選択(D&D他)を自動的にクリップボードへ (:help guioptions_a)
-set guioptions+=a
+"set guioptions+=a
 
 "---------------------------------------------------------------------------
 " メニューに関する設定:
