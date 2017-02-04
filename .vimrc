@@ -308,7 +308,6 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'rking/ag.vim'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'vim-scripts/Align'
@@ -357,13 +356,6 @@ function! s:unite_my_settings()
   imap <silent><buffer> <ESC><ESC> <ESC>q
 endfunction
 "" unite-grep {{{
-" unite-grepのバックエンドをagに切り替える
-" http://qiita.com/items/c8962f9325a5433dc50d
-"let g:unite_source_grep_command = 'ag'
-"let g:unite_source_grep_default_opts = '--nocolor --nogroup'
-"let g:unite_source_grep_recursive_opt = ''
-"let g:unite_source_grep_max_candidates = 200
- 
 " unite-grepのキーマップ
 " 選択した文字列をunite-grep
 " https://github.com/shingokatsushima/dotfiles/blob/master/.vimrc
