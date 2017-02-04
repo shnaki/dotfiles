@@ -1,0 +1,5 @@
+[alias]
+	changelog = !C:/Users/tench/.gittag-changelog/src/gittag_changelog.py
+[user]
+	name = tenchanome
+	email = tencha-nome@hotmail.co.jp
