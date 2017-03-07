@@ -11,6 +11,9 @@ set nobeep
 " 不明 内容確認中
 set wildmode=list:full
 
+" ヒントを文字に変更
+set hintchars=ifjklasdhguonmerwc
+
 " 選択文字列ののコピーを <C-c> に割り当て
 map <C-c> :echo Yank!<CR>Y
 
@@ -47,6 +50,15 @@ map ,f :of
 
 " bookmarkをbで開けるようにする
 map b :bmarks!<Space>
+
+" qmarks
+qmark b https://bitbucket.org/
+qmark d https://drive.google.com/drive/my-drive
+qmark g https://github.com/
+qmark k https://keep.google.com/u/0/#home
+qmark t https://twitter.com/
+qmark w http://ejje.weblio.jp/
+qmark y https://trackings.post.japanpost.jp/delivery/deli/
 
 " 補完で<C-n><C-p>利用
 cmap <C-n> <Tab>
