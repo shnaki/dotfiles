@@ -15,8 +15,9 @@ set wildmode=list:full
 map <C-c> :echo Yank!<CR>Y
 
 " j/k でのスクロール幅を 1行 から 3行 に変更
-map j 3<C-e>
-map k 3<C-y>
+" _smooziee.jsと競合するのでコメントアウト
+"map j 3<C-e>
+"map k 3<C-y>
 
 " Backspace に戻るを割り当て
 map <BS> <A-Left>
@@ -28,18 +29,57 @@ map <S-Left>  :tabmove! -1<CR>
 " 読み込んだ事を出力
 echo .vimperatorrc sourced
 
-"[[,]]で進む戻る強化
+" [[,]]で進む戻る強化
 set nextpattern=\bnext\b,\bmore\b,^next$,^次(の)?ページ,\b次.*,^次へ$,→\b,^>$,^(>>|≫)$,^(>|≫),(>|≫)$
 set previouspattern=\bprev|previous\b,^prev$,^前(の)?ページ,\b前.*,^前へ$,\b←,^<$,^(<<|≪)$,^(<|≪),(<|≪)$
 
-"デフォルト検索エンジンの設定
+" デフォルト検索エンジンの設定
 set defsearch=google
 
-"検索のブックマーク補完
+" 検索のブックマーク補完
 com! -complete=bookmark -nargs=+ ob :o <args>
 com! -complete=history -nargs=+ oh :o <args>
 com! -complete=search -nargs=+ os :o <args>
-"それらのブックマーク
+" それらのブックマーク
 map ,b :ob
 map ,s :os
 map ,f :of
+
+" bookmarkをbで開けるようにする
+map b :bmarks!<Space>
+
+" 補完で<C-n><C-p>利用
+cmap <C-n> <Tab>
+cmap <C-p> <S-Tab>
+
+" プラグイン管理
+source ~/vimperator/vimppm/plugin/vimppm/vimppm.js
+
+" Github にあるプラグイン
+vimppm 'cd01/evernote-clearly-vimp'
+
+" Vimpr にあるプラグイン
+vimppm '_smooziee.js'
+vimppm 'copy.js'
+vimppm 'caret-hint.js'
+
+" プラグイン設定"
+
+" _smooziee.js
+let g:smooziee_scroll_amount="100"
+
+l" copy.js
+javascript <<EOM
+    liberator.globalVariables.copy_templates = [
+        {label: 'anchor', value: '<a href=\"%URL\">%TITLE%</a>'},
+        {label: 'hamlAnchor', value: '%a{href: \"%URL%\"} %TITLE%'},
+        {label: 'slimAnchor', value: 'a(href=\"%URL%\") | %TITLE%'},
+        {label: 'jadeAnchor', value: 'a(href=\"%URL%\")%TITLE%'},
+        {label: '', value: ''},
+        {label: 'htmlblockquote', value: '<blockquote cite=\"%URL%\" title=\"%TITLE%\">%HTMLSEL%</blockquote>'},
+        {label: 'selanchor', value: '<a href=\"%URL%\" title=\"%TITLE%\">%SEL%</a>'},
+        {label: 'title', value: '%TITLE%'},
+        {label: 'titleAndUrl', value: '%TITLE%\n%URL%'},
+        {label: 'markdown', value: '[%TITLE%](%URL%)'}
+    ];
+EOMet g:smooziee_scroll_interval="15"
