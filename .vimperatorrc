@@ -8,10 +8,9 @@ set verbose=9
 " 補完のタイプ
 set wildmode=list:full
 
-" ビープ音すべてを無効にする
-set t_vb=
-set novisualbell
-set belloff=all
+" ビープ音を無効化
+set visualbell
+hi Bell display: none;
 
 " ヒントを文字に変更
 set hintchars=ifjklasdhguonmerwc
