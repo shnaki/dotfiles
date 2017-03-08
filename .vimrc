@@ -32,6 +32,40 @@ scriptencoding utf-8
 "   :version
 
 "---------------------------------------------------------------------------
+if !&compatible
+  set nocompatible
+endif
+
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+" dein settings {{{
+" dein自体の自動インストール
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+  call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
+" プラグイン読み込み＆キャッシュ作成
+let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+  call dein#load_toml(s:toml_file)
+  call dein#end()
+  call dein#save_state()
+endif
+" 不足プラグインの自動インストール
+if has('vim_starting') && dein#check_install()
+  call dein#install()
+endif
+" }}}
+
+
+"---------------------------------------------------------------------------
 " サイトローカルな設定($VIM/vimrc_local.vim)があれば読み込む。読み込んだ後に
 " 変数g:vimrc_local_finishに非0な値が設定されていた場合には、それ以上の設定
 " ファイルの読込を中止する。
@@ -295,204 +329,3 @@ au BufRead,BufNew * match JpSpace /　/
 "Fortran設定
 let fortran_free_source=1
 let fortran_more_precise=1
-"---------------------------------------------------------------------------
-"neobundle設定
-set nocompatible
-filetype off
-
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/bundle'))
-endif
-
-" ここにインストールしたいプラグインのリストを書く
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'tpope/vim-surround.git'
-NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'vim-scripts/Align'
-NeoBundle "thinca/vim-singleton"
-NeoBundle "thinca/vim-qfreplace"
-
-filetype plugin on
-filetype indent on
-
-
-"---------------------------------------------------------------------------
-"singleton.vimの設定
-"インスタンスを一つしか起動しない
-"call singleton#enable()
-
-
-"---------------------------------------------------------------------------
-"unite.vimの設定
-" 起動時にインサートモードで開始
-let g:unite_enable_start_insert = 1
-
-" インサート／ノーマルどちらからでも呼び出せるようにキーマップ
-nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-inoremap <silent> <C-f> <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <C-b> :<C-u>Unite buffer file_mru<CR>
-inoremap <silent> <C-b> <ESC>:<C-u>Unite buffer file_mru<CR>
-
-" バッファ一覧
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-" ファイル一覧
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-" レジスタ一覧
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-" 最近使用したファイル一覧
-nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
-" 全部乗せ
-nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
-
-" unite.vim上でのキーマッピング
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  " 単語単位からパス単位で削除するように変更
-  imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  " ESCキーを2回押すと終了する
-  nmap <silent><buffer> <ESC><ESC> q
-  imap <silent><buffer> <ESC><ESC> <ESC>q
-endfunction
-"" unite-grep {{{
-" unite-grepのキーマップ
-" 選択した文字列をunite-grep
-" https://github.com/shingokatsushima/dotfiles/blob/master/.vimrc
-vnoremap /g y:Unite grep::-iHRn:<C-R>=escape(@", '\\.*$^[]')<CR><CR>
-" }}}
-
-
-"unite prefix key.
-nnoremap [unite] <Nop>
-nmap <Space>f [unite]
- 
-"file_mruの表示フォーマットを指定。空にすると表示スピードが高速化される
-let g:unite_source_file_mru_filename_format = ''
- 
-"bookmarkだけホームディレクトリに保存
-let g:unite_source_bookmark_directory = $HOME . '/.unite/bookmark'
- 
-
-"---------------------------------------------------------------------------
-"vimfilerの設定 
-"vimデフォルトのエクスプローラをvimfilerで置き換える
-let g:vimfiler_as_default_explorer = 1
-
-"セーフモードを無効にした状態で起動する
-let g:vimfiler_safe_mode_by_default = 0
-
-"<F3>で現在開いているディレクトリをIDE風に開く
-nmap <F3>  :Unite bookmark<CR>
-
-"<F2>で現在開いているディレクトリをIDE風に開く
-nmap <F2>  :VimFilerBufferDir -split -simple -winwidth=35 -no-quit -toggle<CR>
-autocmd FileType vimfiler nnoremap <buffer><silent>/  :<C-u>Unite file -default-action=vimfiler<CR>
-autocmd FileType vimfiler nnoremap <silent><buffer> e :call <SID>vimfiler_tree_edit('open')<CR>
-
-"現在開いているバッファのディレクトリを開く
-nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
-
-"デフォルトのキーマッピングを変更
-augroup vimrc
-  autocmd FileType vimfiler call s:vimfiler_my_settings()
-augroup END
-function! s:vimfiler_my_settings()
-  nmap <buffer> q <Plug>(vimfiler_exit)
-  nmap <buffer> Q <Plug>(vimfiler_hide)
-endfunction
- 
- 
-" Edit file by tabedit.
-let g:vimfiler_edit_action = 'edit'
-
-" Like Textmate icons.
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '?'
-let g:vimfiler_tree_closed_icon = '?'
-let g:vimfiler_file_icon = '-'
-let g:vimfiler_marked_file_icon = '*'
- 
-function! s:vimfiler_tree_edit(method) "{{{4
-  " let file = vimfiler#get_file()
-  " if empty(file) || empty(a:method) | return | endif
-  " let path = file.action__path
-  " wincmd p
-  " execute a:method
-  " exe 'edit' path
-  if empty(a:method) | return | endif
-  let linenr = line('.')
-  let context = s:vimfiler_create_action_context(a:method, linenr)
-  wincmd p
-  " call vimfiler#mappings#do_action(a:method, linenr)
-  call context.execute()
-  unlet context
-endfunction
- 
-function! s:vimfiler_create_action_context(action, ...) " {{{4
-  let cursor_linenr = get(a:000, 0, line('.'))
-  let vimfiler = vimfiler#get_current_vimfiler()
-  let marked_files = vimfiler#get_marked_files()
-  if empty(marked_files)
-    let marked_files = [ vimfiler#get_file(cursor_linenr) ]
-  endif
- 
-  let context = s:vimfiler_context.new({
-        \ 'action' : a:action,
-        \ 'files' : marked_files,
-        \ 'current_dir' : vimfiler.current_dir,
-        \ })
-  return context
-endfunction
- 
-let s:vimfiler_context = {} " {{{4
-function! s:vimfiler_context.new(...)
-  let dict = get(a:000, 0, {})
-  return extend(dict, self)
-endfunction
- 
-function! s:vimfiler_context.execute()
-  call unite#mappings#do_action(self.action, self.files, {
-        \ 'vimfiler__current_directory' : self.current_dir,
-        \ })
-endfunction
-
-
-"---------------------------------------------------------------------------
-"neobomplecacheの設定
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-" Use neocomplcache.
-let g:neocomplcache_enable_at_startup = 1
-" Use smartcase.
-let g:neocomplcache_enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : ''
-    \ }
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplcache#smart_close_popup() . "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplcache#close_popup()
-inoremap <expr><C-e>  neocomplcache#cancel_popup()

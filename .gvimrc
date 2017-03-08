@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version gvimrc file.
 " 日本語版のデフォルトGUI設定ファイル(gvimrc) - Vim7用試作
 "
-" Last Change: 05-Feb-2017.
+" Last Change: 08-Mar-2017.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -60,10 +60,6 @@ endif
 if 1 && (!exists('g:no_gvimrc_example') || g:no_gvimrc_example == 0)
   source $VIMRUNTIME/gvimrc_example.vim
 endif
-
-"---------------------------------------------------------------------------
-" カラー設定:
-colorscheme hybrid
 
 "---------------------------------------------------------------------------
 " フォント設定:
