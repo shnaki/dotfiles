@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 07-Mar-2017.
+" Last Change: 08-Mar-2017.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -250,7 +250,9 @@ endif
 "標準設定
 
 " ビープ音を無効
-set vb t_vb=
+set t_vb=
+set novisualbell
+set belloff=all
 "swapを作成しない
 set noswapfile
 "backupを作成しない
