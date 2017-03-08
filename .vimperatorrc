@@ -3,30 +3,25 @@ style -name commandline-ime chrome://* #liberator-commandline-command input {ime
 " ブラウザタイトルの変更
 " Firefox デフォルトは 「Mozilla - Firefox」、vimperatorを入れると「vimperator」
 set titlestring=Firefox
-" 詳細表示レベル？ 内容確認中、左下のステータス状況か？
-" →「:javascript! 」で表示される内容レベル
+" 「:javascript! 」で表示される内容レベル
 set verbose=9
-" 不明 内容確認中
+" 補完のタイプ
 set wildmode=list:full
 
 " ビープ音すべてを無効にする
-set visualbell t_vb=
-" エラーメッセージの表示時にビープを鳴らさない
-set noerrorbells
+set t_vb=
+set novisualbell
+set belloff=all
 
 " ヒントを文字に変更
 set hintchars=ifjklasdhguonmerwc
 
-" 選択文字列ののコピーを <C-c> に割り当て
+" 選択文字列のコピーを <C-c> に割り当て
 map <C-c> :echo Yank!<CR>Y
 
-" j/k でのスクロール幅を 1行 から 3行 に変更
-" _smooziee.jsと競合するのでコメントアウト
-"map j 3<C-e>
-"map k 3<C-y>
-
-" Backspace に戻るを割り当て
-map <BS> <A-Left>
+" j/k でのスクロール幅を 1行 から 5行 に変更
+nnoremap j 5<C-e>
+nnoremap k 5<C-y>
 
 " Shift + ← → で現在のタブの位置変更
 map <S-Right> :tabmove! +1<CR>
@@ -69,20 +64,17 @@ cmap <C-n> <Tab>
 cmap <C-p> <S-Tab>
 
 " プラグイン管理
-source ~/vimperator/vimppm/plugin/vimppm/vimppm.js
+source ~/vimperator/vimppm/vimppm/plugin/vimppm.js
 
 " Github にあるプラグイン
 vimppm 'cd01/evernote-clearly-vimp'
 
 " Vimpr にあるプラグイン
-vimppm '_smooziee.js'
+vimppm '_libly.js'
 vimppm 'copy.js'
 vimppm 'caret-hint.js'
 
 " プラグイン設定"
-
-" _smooziee.js
-let g:smooziee_scroll_amount="100"
 
 l" copy.js
 javascript <<EOM
@@ -98,4 +90,4 @@ javascript <<EOM
         {label: 'titleAndUrl', value: '%TITLE%\n%URL%'},
         {label: 'markdown', value: '[%TITLE%](%URL%)'}
     ];
-EOMet g:smooziee_scroll_interval="15"
+EOM
