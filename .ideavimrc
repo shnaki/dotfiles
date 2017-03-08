@@ -1,62 +1,55 @@
-"クリップボード利用
+" クリップボード利用
 set clipboard+=unnamed
 
-"相対行数を表示
-"set relativenumber
+" 検索をファイルの先頭へ循環しない
+set nowrapscan
 
-"検索をファイルの先頭へ循環しない
-"set nowrapscan
-
-"大文字小文字の区別なし
+" 大文字小文字の区別なし
 set ignorecase
 
-"検索時に大文字を含んでいたら大/小を区別
+" 検索時に大文字を含んでいたら大/小を区別
 set smartcase
 
-"検索対象をハイライト
-"ハイライトを消す場合は:noh[l]
+" 検索対象をハイライト
 set hlsearch
 
-"スクロール時に表示を10行確保
+" スクロール時に表示を10行確保
 set scrolloff=10
 
-"JIS 配列 C-[ で Esc
+" JIS 配列 C-[ で Esc
 inoremap <C-]> <Esc>
 
-"x キー削除でデフォルトレジスタに入れない
+" x キー削除でデフォルトレジスタに入れない
 nnoremap x "_x
 vnoremap x "_x
 
-"vv で行末まで選択
+" vv で行末まで選択
 vnoremap v ^$h
 
-"選択範囲のインデントを連続して変更
+" 選択範囲のインデントを連続して変更
 vnoremap < <gv
 vnoremap > >gv
 
-"ノーマルモード中にEnterで改行
+" ノーマルモード中にEnterで改行
 noremap <CR> i<CR><Esc>
 
-"インサートモードで bash 風キーマップ
+" インサートモードで bash 風キーマップ
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$<Right>
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
-"inoremap <C-n> <Down>
-"inoremap <C-p> <Up>
 inoremap <C-h> <BS>
 inoremap <C-d> <Del>
 inoremap <C-k> <C-o>D<Right>
 inoremap <C-u> <C-o>d^
 inoremap <C-w> <C-o>db
 
-"gc, gf, gs, ga でそれぞれのGotoコマンド実行
+" Ctrl-n, Ctrl-p でタブ移動(ノーマルモード)
+nnoremap <C-n> :action NextTab<CR>
+nnoremap <C-p> :action PreviousTab<CR>
+
+" gc, gf, gs, ga でそれぞれのGotoコマンド実行
 noremap gc :action GotoClass<CR>
 noremap gf :action GotoFile<CR>
 noremap gs :action GotoSymbol<CR>
 noremap ga :action GotoAction<CR>
-
-"Ctrl-n, Ctrl-p でタブ移動(ノーマルモード)
-nnoremap <C-n> :action NextTab<CR>
-nnoremap <C-p> :action PreviousTab<CR>
-
