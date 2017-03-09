@@ -4,7 +4,7 @@ scriptencoding utf-8
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 08-Mar-2017.
+" Last Change: 09-Mar-2017.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -51,10 +51,12 @@ if !isdirectory(s:dein_repo_dir)
 endif
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
 " プラグイン読み込み＆キャッシュ作成
-let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+let s:toml = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+let s:lazy_toml = fnamemodify(expand('<sfile>'), ':h').'/deinlazy.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
-  call dein#load_toml(s:toml_file)
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
   call dein#end()
   call dein#save_state()
 endif
@@ -287,9 +289,9 @@ endif
 set t_vb=
 set novisualbell
 set belloff=all
-"swapを作成しない
+" swapを作成しない
 set noswapfile
-"backupを作成しない
+" backupを作成しない
 set nobackup
 " vモードの置換連続ペースト用
 function! Put_text_without_override_register()
@@ -305,27 +307,27 @@ function! Put_text_without_override_register()
 endfunction
 xnoremap <silent> p :call Put_text_without_override_register()<CR>
 set clipboard=unnamed "ヤンクした時に自動でクリップボードにコピー(autoselectを指定するとvモードの置換連続ペーストができない)
-"起動時に最大化
+" 起動時に最大化
 au GUIEnter * simalt ~x
 
-"ヘルプを日本語優先に
+" ヘルプを日本語優先に
 set helplang=ja
 "---------------------------------------------------------------------------
-"編集関係
-set tabstop=2 "画面上でタブ文字が占める幅
-set shiftwidth=2 "自動インデントでずれる幅
-set softtabstop=2 "連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
-set autoindent "改行時に前の行のインデントを継続する
-set smartindent "改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-"txtの折り返しを無効化
+" 編集関係
+set tabstop=2 " 画面上でタブ文字が占める幅
+set shiftwidth=2 " 自動インデントでずれる幅
+set softtabstop=2 " 連続した空白に対してタブキーやバックスペースキーでカーソルが動く幅
+set autoindent " 改行時に前の行のインデントを継続する
+set smartindent " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+" txtの折り返しを無効化
 autocmd FileType text setlocal textwidth=0
-"不可視文字の可視化
+" 不可視文字の可視化
 set lcs=tab:>.,trail:_,extends:\
 
-"全角スペースのハイライト(文字コードの関係で動かない)
+" 全角スペースのハイライト(文字コードの関係で動かない)
 highlight JpSpace cterm=underline ctermfg=Blue guifg=Blue
 au BufRead,BufNew * match JpSpace /　/
 "---------------------------------------------------------------------------
-"Fortran設定
+" Fortran設定
 let fortran_free_source=1
 let fortran_more_precise=1
