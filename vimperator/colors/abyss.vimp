@@ -8,9 +8,7 @@ hi CompItem[selected] background-color: DimGray;
 hi CompTitle          color: DeepPink; font-size: 11pt;
 
 " Hints
-hi Hint               font-family: monospace; font-size: 16px; font-weight: normal; color: white; background-color: rgba(0, 0, 0, 0.5); border: solid 1px LightGray;
 hi HintElem           background-color: Khaki; color: Black;
-hi HintActive         background-color: Orange; color: White;
 
 hi Keyword            color: DodgerBlue;
 hi NonText            background-color: #333;
