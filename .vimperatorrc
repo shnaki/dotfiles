@@ -1,5 +1,8 @@
 style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
 
+" カラースキーマの読み込み
+:colorscheme abyss
+
 " ブラウザタイトルの変更
 " Firefox デフォルトは 「Mozilla - Firefox」、vimperatorを入れると「vimperator」
 set titlestring=Firefox
