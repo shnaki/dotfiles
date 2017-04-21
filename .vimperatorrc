@@ -85,11 +85,19 @@ javascript <<EOM
         {label: 'hamlAnchor', value: '%a{href: \"%URL%\"} %TITLE%'},
         {label: 'slimAnchor', value: 'a(href=\"%URL%\") | %TITLE%'},
         {label: 'jadeAnchor', value: 'a(href=\"%URL%\")%TITLE%'},
-        {label: '', value: ''},
         {label: 'htmlblockquote', value: '<blockquote cite=\"%URL%\" title=\"%TITLE%\">%HTMLSEL%</blockquote>'},
         {label: 'selanchor', value: '<a href=\"%URL%\" title=\"%TITLE%\">%SEL%</a>'},
         {label: 'title', value: '%TITLE%'},
         {label: 'titleAndUrl', value: '%TITLE%\n%URL%'},
-        {label: 'markdown', value: '[%TITLE%](%URL%)'}
+        {label: 'markdown', value: '[%TITLE%](%URL%)'},
+        {label: 'ASIN', value: 'copy ASIN code from Amazon', custom: function(){return content.document.getElementById('ASIN').value;}},
+        {label: 'amazon', value: 'copy clean amazon url from current page',
+          custom: function() {
+            var m = content.document.location.pathname.match(/dp\/(\d+)/);
+            return m ? ('http://amazon.jp/dp/' + m[1]) : null;
+          }
+        },
+        {label: 'reference', value: '「%TITLE%」＜%URL%＞ (参照: 2017.04.01)'}
     ];
 EOM
+
