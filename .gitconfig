@@ -1,50 +1,7 @@
-[core]
-    pager = less -q -R
-    excludesfile = ~/.gitignore
-    preloadindex = true
-
-[color]
-    ui = auto
-
-[color "diff"]
-    meta = 242 238
-    frag = 239 236
-    old = 167 normal
-    new = 030 normal
-    context = 240
-    commit = 246 024
-
 [alias]
-    st = status
-    co = checkout
-    ci = commit
-    typechange = status -s | awk '$1=="T"{print $2}' | xargs git checkout
-    graph = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
-    br = switch
-    review = diff origin/master...
-
-[help]
-    autocorrect = 1
-
-[push]
-    default = matching
-
+  changelog = !C:/Users/tench/.gittag-changelog/src/gittag_changelog.py
 [user]
-    name  = tenchanome
-    email = tencha-nome@hotmail.co.jp
-
-[pager]
-    log  = diff-highlight | less -RX
-    show = diff-highlight | less -RX
-    diff = diff-highlight | less -RX
-
-[diff]
-    tool      = vimdiff
-    algorithm = histogram
-    compactionHeuristic = true
-
+  name = tenchanome
+  email = tencha-nome@hotmail.co.jp
 [ghq]
-    root = ~/src
-
-[merge]
-    tool = vimdiff
+  root = ~/src
