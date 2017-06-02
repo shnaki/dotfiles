@@ -5,5 +5,5 @@ do
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
 
-    ln -s ~/dotfiles/"$f" ~/
+    ln -sf ~/dotfiles/"$f" ~/
 done
