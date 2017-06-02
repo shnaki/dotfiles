@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for f in .??*
+for f in $HOME/dotfiles/.??*
 do
     [[ "$f" == ".git" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
