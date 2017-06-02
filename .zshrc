@@ -112,7 +112,7 @@ if exists peco; then
 
   function peco-src() {
     local src=$(ghq list --full-path | peco --query "$LBUFFEER")
-    if [ -n "$src"]; then
+    if [ -n "$src" ]; then
       BUFFER="cd $src"
       zle accept-line
     fi
