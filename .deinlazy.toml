@@ -1,4 +1,4 @@
-[[plugins]] # カーソル位置のコンテキストに合わせてftを切り替える
+[[plugins]] # Switch filetype by cusor context
 repo = 'osyo-manga/vim-precious'
 depends = ['context_filetype.vim']
 

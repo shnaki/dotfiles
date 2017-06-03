@@ -4,17 +4,15 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 
-[[plugins]] # カーソル位置のコンテキストのftを判定するライブラリ
+[[plugins]] # Context filetype library
 repo = 'Shougo/context_filetype.vim'
 
 [[plugins]] # ls-dyna
 repo = 'gradzikb/vim-lsdyna'
 
-[[plugins]] # カラースキーマ
+[[plugins]] # color scheme
 repo = 'w0ng/vim-hybrid'
 hook_add = '''
   set background=dark
-  " colorscheme 設定は source 後に行う必要があるので VimEnter で行う。
-  " 但し Colorscheme イベントの発生が抑制されないよう nented を付ける。
   au MyAutoCmd VimEnter * nested colorscheme hybrid
 '''
