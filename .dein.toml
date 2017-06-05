@@ -10,9 +10,9 @@ repo = 'Shougo/context_filetype.vim'
 [[plugins]] # ls-dyna
 repo = 'gradzikb/vim-lsdyna'
 
-[[plugins]] # color scheme
-repo = 'w0ng/vim-hybrid'
-hook_add = '''
-  set background=dark
-  au MyAutoCmd VimEnter * nested colorscheme hybrid
-'''
+#[[plugins]] # color scheme
+#repo = 'w0ng/vim-hybrid'
+#hook_add = '''
+#  set background=dark
+#  au MyAutoCmd VimEnter * nested colorscheme hybrid
+#'''
