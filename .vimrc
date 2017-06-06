@@ -201,22 +201,6 @@ if filereadable($VIM . '/vimrc') && filereadable($VIM . '/ViMrC')
 endif
 
 "---------------------------------------------------------------------------
-" コンソールでのカラー表示のための設定(暫定的にUNIX専用)
-if has('unix') && !has('gui_running')
-  let s:uname = system('uname')
-  if s:uname =~? "linux"
-    set term=builtin_linux
-  elseif s:uname =~? "freebsd"
-    set term=builtin_cons25
-  elseif s:uname =~? "Darwin"
-    set term=beos-ansi
-  else
-    set term=builtin_xterm
-  endif
-  unlet s:uname
-endif
-
-"---------------------------------------------------------------------------
 " コンソール版で環境変数$DISPLAYが設定されていると起動が遅くなる件へ対応
 if !has('gui_running') && has('xterm_clipboard')
   set clipboard=exclude:cons\\\|linux\\\|cygwin\\\|rxvt\\\|screen
