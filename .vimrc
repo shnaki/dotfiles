@@ -188,7 +188,7 @@ set noundofile
 " ファイル操作に関する設定:
 "
 " バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
-"set nobackup
+set nobackup
 
 
 "---------------------------------------------------------------------------
@@ -264,8 +264,6 @@ set novisualbell
 set belloff=all
 " swapを作成しない
 set noswapfile
-" backupを作成しない
-set nobackup
 " vモードの置換連続ペースト用
 function! Put_text_without_override_register()
   let line_len = strlen(getline('.'))
