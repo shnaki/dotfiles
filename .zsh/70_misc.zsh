@@ -57,8 +57,5 @@ export FZF_DEFAULT_OPTS='
 --bind=ctrl-z:toggle-all
 '
 
-# Display
-export DISPLAY=localhost:0.0
-
 # diff-highlight
 export PATH="$PATH:/usr/share/doc/git/contrib/diff-highlight"
