@@ -106,7 +106,7 @@ zle -N _delete-char-or-list-expand
 bindkey '^D' _delete-char-or-list-expand
 
 # Ctrl-R
-_peco-select-history() {
+_select-history-filter() {
     if true; then
         BUFFER="$(
         history 1 \
@@ -127,8 +127,8 @@ _peco-select-history() {
         fi
     fi
 }
-# zle -N _peco-select-history
-# bindkey '^r' _peco-select-history
+zle -N _select-history-filter
+bindkey '^r' _select-history-filter
 
 _start-tmux-if-it-is-not-already-started() {
     BUFFER="${${${(M)${+commands[tmuxx]}#1}:+tmuxx}:-tmux}"
@@ -177,7 +177,7 @@ do-enter() {
 zle -N do-enter
 bindkey '^m' do-enter
 
-peco-select-gitadd() {
+_select-gitadd-filter() {
     local selected_file_to_add
     selected_file_to_add="$(
     git status --porcelain \
@@ -194,8 +194,8 @@ peco-select-gitadd() {
     fi
     zle reset-prompt
 }
-zle -N peco-select-gitadd
-bindkey '^g^a' peco-select-gitadd
+zle -N _select-gitadd-filter
+bindkey '^g^a' _select-gitadd-filter
 
 exec-oneliner() {
     local oneliner_f
@@ -260,3 +260,14 @@ globalias() {
 zle -N globalias
 
 bindkey " " globalias
+
+# filter ghq list by Ctrl-]
+function _ghq-filter () {
+  local selected_dir=$(ghq list -p | fzf --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+}
+zle -N _ghq-filter
+bindkey '^]' _ghq-filter
