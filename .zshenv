@@ -76,7 +76,7 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
-# fzf - command-line fuzzy finder (https://github.com/junegunn/fzf)
+# fzf - command-line fuzzy finder
 export FZF_DEFAULT_OPTS="--extended --ansi --multi"
 
 # History
