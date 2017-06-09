@@ -261,7 +261,17 @@ function! Put_text_without_override_register()
   endif
 endfunction
 xnoremap <silent> p :call Put_text_without_override_register()<CR>
-set clipboard=unnamed "ヤンクした時に自動でクリップボードにコピー(autoselectを指定するとvモードの置換連続ペーストができない)
+
+
+if IsWindows()
+  "ヤンクした時に自動でクリップボードにコピー(autoselectを指定するとvモードの置換連続ペーストができない)
+  set clipboard=unnamed
+else
+  " Linux
+  set clipboard&
+  set clipboard^=unnamedplus
+endif
+
 " 起動時に最大化
 au GUIEnter * simalt ~x
 
