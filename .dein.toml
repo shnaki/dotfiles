@@ -7,6 +7,9 @@ repo = 'Shougo/denite.nvim'
 [[plugins]] # Context filetype library
 repo = 'Shougo/context_filetype.vim'
 
+[[plugins]] # Provide pseudo "clipboard" registers
+repo = 'kana/vim-fakeclip'
+
 [[plugins]] # ls-dyna
 repo = 'gradzikb/vim-lsdyna'
 
