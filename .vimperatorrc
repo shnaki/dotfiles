@@ -18,6 +18,9 @@ hi Bell display: none;
 " ヒントを文字に変更
 set hintchars=ifjklasdhguonmerwc
 
+" ハイライトのエラー対策
+set nohls
+
 " 選択文字列のコピーを <C-c> に割り当て
 map <C-c> :echo Yank!<CR>Y
 
@@ -78,7 +81,7 @@ vimppm 'caret-hint.js'
 
 " プラグイン設定"
 
-l" copy.js
+" copy.js
 javascript <<EOM
     liberator.globalVariables.copy_templates = [
         {label: 'anchor', value: '<a href=\"%URL\">%TITLE%</a>'},
