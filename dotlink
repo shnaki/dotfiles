@@ -1,0 +1,11 @@
+# vim: ft=conf
+.dein.toml,.dein.toml
+.deinlazy.toml,.deinlazy.toml
+.gitconfig,.gitconfig
+.gvimrc,.gvimrc
+.ideavimrc,.ideavimrc
+.zsh,.zsh
+.tmux.conf,.tmux.conf
+.vimrc,.vimrc
+.zshenv,.zshenv
+.zshrc,.zshrc
