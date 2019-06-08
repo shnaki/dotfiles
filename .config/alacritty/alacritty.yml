@@ -269,7 +269,7 @@ live_config_reload: true
 # You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
 # Entries in `shell.args` are passed unmodified as arguments to the shell.
 shell:
-  program: "C:\\Windows\\System32\\wsl.exe"
+  program: "C:\\Program Files\\WindowsApps\\CanonicalGroupLimited.Ubuntu18.04onWindows_1804.2019.522.0_x64__79rhkp1fndgsc\\ubuntu1804.exe"
   # args:
   #  - --login
 
