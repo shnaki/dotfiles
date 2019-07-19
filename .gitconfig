@@ -33,7 +33,7 @@
     default = matching
 
 [user]
-    name  = tenchanome
+    name  = shnaki
     email = tehnca-nome@hotmail.co.jp
 
 [pager]
@@ -48,7 +48,7 @@
 
 [ghq]
     root = ~/src
-    # user = tenchanome
+    # user = shnaki
 
 [merge]
     tool = vimdiff
