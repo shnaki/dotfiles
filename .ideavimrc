@@ -1,39 +1,43 @@
-" �N���b�v�{�[�h���p
+" クリップボード利用
 set clipboard+=unnamed
 
-" �������t�@�C���̐擪�֏z���Ȃ�
+" 検索をファイルの先頭へ循環しない
 set nowrapscan
 
-" �啶���������̋�ʂȂ�
+" 大文字小文字の区別なし
 set ignorecase
 
-" �������ɑ啶�����܂�ł������/�������
+" 検索時に大文字を含んでいたら大/小を区別
 set smartcase
 
-" �����Ώۂ��n�C���C�g
+" 検索対象をハイライト
 set hlsearch
 
-" �X�N���[�����ɕ\����10�s�m��
+" スクロール時に表示を10行確保
 set scrolloff=10
 
-" JIS �z�� C-[ �� Esc
+" ベルを無効化
+set visualbell
+set noerrorbells
+
+" JIS 配列 C-[ で Esc
 inoremap <C-]> <Esc>
 
-" x �L�[�폜�Ńf�t�H���g���W�X�^�ɓ���Ȃ�
+" x キー削除でデフォルトレジスタに入れない
 nnoremap x "_x
 vnoremap x "_x
 
-" vv �ōs���܂őI��
+" vv で行末まで選択
 vnoremap v ^$h
 
-" �I��͈͂̃C���f���g��A�����ĕύX
+" 選択範囲のインデントを連続して変更
 vnoremap < <gv
 vnoremap > >gv
 
-" �m�[�}�����[�h����Enter�ŉ��s
+" ノーマルモード中にEnterで改行
 noremap <CR> i<CR><Esc>
 
-" �C���T�[�g���[�h�� bash ���L�[�}�b�v
+" インサートモードで bash 風キーマップ
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$<Right>
 inoremap <C-b> <Left>
@@ -44,11 +48,11 @@ inoremap <C-k> <C-o>D<Right>
 inoremap <C-u> <C-o>d^
 inoremap <C-w> <C-o>db
 
-" Ctrl-n, Ctrl-p �Ń^�u�ړ�(�m�[�}�����[�h)
+" Ctrl-n, Ctrl-p でタブ移動(ノーマルモード)
 nnoremap <C-n> :action NextTab<CR>
 nnoremap <C-p> :action PreviousTab<CR>
 
-" gc, gf, gs, ga �ł��ꂼ���Goto�R�}���h���s
+" gc, gf, gs, ga でそれぞれのGotoコマンド実行
 noremap gc :action GotoClass<CR>
 noremap gf :action GotoFile<CR>
 noremap gs :action GotoSymbol<CR>
