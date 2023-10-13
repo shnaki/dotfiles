@@ -2,6 +2,16 @@
     pager = less -q -R
     excludesfile = ~/.gitignore
     preloadindex = true
+    packedGitLimit = 128m
+    packedGitWindowSize = 128m
+
+[init]
+    defaultBranch = main
+
+[pack]
+    deltaCacheSize = 128m
+    packSizeLimit = 128m
+    windowMemory = 128m
 
 [color]
     ui = auto
