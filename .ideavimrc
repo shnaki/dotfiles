@@ -57,3 +57,6 @@ noremap gc :action GotoClass<CR>
 noremap gf :action GotoFile<CR>
 noremap gs :action GotoSymbol<CR>
 noremap ga :action GotoAction<CR>
+
+" Show error description.
+noremap <C-h> :action ShowErrorDescription<CR>
