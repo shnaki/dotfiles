@@ -60,3 +60,7 @@ noremap ga :action GotoAction<CR>
 
 " Show error description.
 noremap <C-h> :action ShowErrorDescription<CR>
+
+" Jump to next/previous change
+nnoremap ]c :action VcsShowNextChangeMarker<Enter>
+nnoremap [c :action VcsShowPrevChangeMarker<Enter>
