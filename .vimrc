@@ -95,16 +95,6 @@ if 1 && exists('$HOME') && filereadable($HOME . '/.vimrc_first.vim')
   endif
 endif
 
-if IsWindows()
-  " plugins下のディレクトリをruntimepathへ追加する。
-  for s:path in split(glob($VIM.'/plugins/*'), '\n')
-    if s:path !~# '\~$' && isdirectory(s:path)
-      let &runtimepath = &runtimepath.','.s:path
-    end
-  endfor
-  unlet s:path
-endif
-
 "---------------------------------------------------------------------------
 " メニューファイルが存在しない場合は予め'guioptions'を調整しておく
 if 1 && !filereadable($VIMRUNTIME . '/menu.vim') && has('gui_running')
@@ -218,26 +208,6 @@ if has('mac')
   " Macではデフォルトの'iskeyword'がcp932に対応しきれていないので修正
   set iskeyword=@,48-57,_,128-167,224-235
 endif
-
-"---------------------------------------------------------------------------
-
-if IsWindows()
-  " KaoriYaでバンドルしているプラグインのための設定
-
-  " autofmt: 日本語文章のフォーマット(折り返し)プラグイン.
-  "set formatexpr=autofmt#japanese#formatexpr()
-
-  " vimdoc-ja: 日本語ヘルプを無効化する.
-  if kaoriya#switch#enabled('disable-vimdoc-ja')
-    let &rtp = join(filter(split(&rtp, ','), 'v:val !~ "[/\\\\]plugins[/\\\\]vimdoc-ja"'), ',')
-  endif
-
-  " vimproc: 同梱のvimprocを無効化する
-  if kaoriya#switch#enabled('disable-vimproc')
-    let &rtp = join(filter(split(&rtp, ','), 'v:val !~ "[/\\\\]plugins[/\\\\]vimproc$"'), ',')
-  endif
-endif
-
 
 "---------------------------------------------------------------------------
 "標準設定
