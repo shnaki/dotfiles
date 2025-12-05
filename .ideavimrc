@@ -20,6 +20,9 @@ set scrolloff=10
 set visualbell
 set noerrorbells
 
+" Enable Surround Vim
+set surround
+
 " JIS 配列 C-[ で Esc
 inoremap <C-]> <Esc>
 
