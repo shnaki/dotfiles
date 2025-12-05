@@ -1,17 +1,15 @@
-" クリップボード利用
-set clipboard+=unnamed
+" クリップボード
+set clipboard+=unnamed  " クリップボード利用する
+set clipboard-=ideaput  " ペースト時のインデントを無効化する
 
-" 検索をファイルの先頭へ循環しない
-set nowrapscan
+" 検索関連設定
+set nowrapscan  " 検索をファイルの先頭へ循環しない
+set ignorecase  " 大文字小文字の区別なし
+set smartcase   " 検索時に大文字を含んでいたら大/小を区別する
+set hlsearch    " 検索対象をハイライト
 
-" 大文字小文字の区別なし
-set ignorecase
-
-" 検索時に大文字を含んでいたら大/小を区別
-set smartcase
-
-" 検索対象をハイライト
-set hlsearch
+" 行の結合を賢くする
+set ideajoin
 
 " スクロール時に表示を10行確保
 set scrolloff=10
@@ -20,9 +18,14 @@ set scrolloff=10
 set visualbell
 set noerrorbells
 
-" Enable Surround Vim
+" リーダーをスペースに変更する
+let mapleader = "\<Space>"
+
+" 旧プラグイン設定
 set surround
 
+" -----------------------------------------------------------------------------
+" キーマッピング
 " JIS 配列 C-[ で Esc
 inoremap <C-]> <Esc>
 
@@ -51,7 +54,7 @@ inoremap <C-k> <C-o>D<Right>
 inoremap <C-u> <C-o>d^
 inoremap <C-w> <C-o>db
 
-" Ctrl-n, Ctrl-p でタブ移動(ノーマルモード)
+" Ctrl-n, Ctrl-p でタブ移動する(ノーマルモード)
 nnoremap <C-n> :action NextTab<CR>
 nnoremap <C-p> :action PreviousTab<CR>
 
@@ -61,9 +64,36 @@ noremap gf :action GotoFile<CR>
 noremap gs :action GotoSymbol<CR>
 noremap ga :action GotoAction<CR>
 
-" Show error description.
+" Ctrl-hでエラーを表示する
 noremap <C-h> :action ShowErrorDescription<CR>
 
-" Jump to next/previous change
-nnoremap ]c :action VcsShowNextChangeMarker<Enter>
-nnoremap [c :action VcsShowPrevChangeMarker<Enter>
+" ]c, [cで変更箇所へジャンプする
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+
+" -----------------------------------------------------------------------------
+" プラグイン設定
+" EasyMotion
+set easymotion
+
+" デフォルトのマッピングを無効化する
+let g:EasyMotion_do_mapping = 0
+
+" 大文字小文字を区別しない
+let g:EasyMotion_smartcase = 1
+
+" t, f移動を便利にする
+map f <Plug>(easymotion-fl)
+map t <Plug>(easymotion-tl)
+map F <Plug>(easymotion-Fl)
+map T <Plug>(easymotion-Tl)
+
+" 検索移動
+map <leader>f <Plug>(easymotion-bd-f)
+map <leader>s <Plug>(easymotion-s2)
+
+" ライン移動
+" `JK` モーション時にカーソルを先頭に移動しない
+let g:EasyMotion_startofline = 0
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
