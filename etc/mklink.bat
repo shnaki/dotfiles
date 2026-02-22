@@ -1,10 +1,40 @@
-mkdir %HOMEPATH%"\vimfiles" > NUL 2>&1
-if ERRORLEVEL 1 cmd /c exit 0
-mklink %HOMEPATH%"\.gitconfig" %HOMEPATH%"\dotfiles\.gitconfig"
-mklink %HOMEPATH%"\.gvimrc" %HOMEPATH%"\dotfiles\.gvimrc"
-mklink %HOMEPATH%"\.ideavimrc" %HOMEPATH%"\dotfiles\.ideavimrc"
-mklink %HOMEPATH%"\.vimrc" %HOMEPATH%"\dotfiles\.vimrc"
-mklink %HOMEPATH%"\.dein.toml" %HOMEPATH%"\dotfiles\.dein.toml"
-mklink %HOMEPATH%"\.deinlazy.toml" %HOMEPATH%"\dotfiles\.deinlazy.toml"
-mklink %HOMEPATH%"\.deinlazy.toml" %HOMEPATH%"\dotfiles\.deinlazy.toml"
-mklink /d %APPDATA%"\alacritty" %HOMEPATH%"\dotfiles\.config\alacritty"
+@echo off
+setlocal
+
+set "SCRIPT_DIR=%~dp0"
+for %%I in ("%SCRIPT_DIR%..") do set "DOTFILES_DIR=%%~fI"
+set "APPDATA_DIR=%APPDATA%"
+
+if not exist "%USERPROFILE%\vimfiles" mkdir "%USERPROFILE%\vimfiles"
+if not exist "%APPDATA_DIR%\Zed" mkdir "%APPDATA_DIR%\Zed"
+
+call :link_or_copy_file "%USERPROFILE%\.gitconfig" "%DOTFILES_DIR%\.gitconfig"
+call :link_or_copy_file "%USERPROFILE%\.gvimrc" "%DOTFILES_DIR%\.gvimrc"
+call :link_or_copy_file "%USERPROFILE%\.ideavimrc" "%DOTFILES_DIR%\.ideavimrc"
+call :link_or_copy_file "%USERPROFILE%\.vimrc" "%DOTFILES_DIR%\.vimrc"
+call :link_or_copy_file "%USERPROFILE%\.dein.toml" "%DOTFILES_DIR%\.dein.toml"
+call :link_or_copy_file "%USERPROFILE%\.deinlazy.toml" "%DOTFILES_DIR%\.deinlazy.toml"
+
+call :link_or_copy_dir "%APPDATA_DIR%\alacritty" "%DOTFILES_DIR%\.config\alacritty"
+
+call :link_or_copy_file "%APPDATA_DIR%\Zed\settings.json" "%DOTFILES_DIR%\.config\zed\settings.json"
+call :link_or_copy_file "%APPDATA_DIR%\Zed\keymap.json" "%DOTFILES_DIR%\.config\zed\keymap.json"
+
+echo done
+exit /b 0
+
+:link_or_copy_file
+set "DEST=%~1"
+set "SRC=%~2"
+if exist "%DEST%" del /f /q "%DEST%" >nul 2>&1
+mklink "%DEST%" "%SRC%" >nul 2>&1
+if errorlevel 1 copy /y "%SRC%" "%DEST%" >nul
+exit /b 0
+
+:link_or_copy_dir
+set "DEST=%~1"
+set "SRC=%~2"
+if exist "%DEST%" rmdir /s /q "%DEST%" >nul 2>&1
+mklink /d "%DEST%" "%SRC%" >nul 2>&1
+if errorlevel 1 xcopy "%SRC%" "%DEST%\" /e /i /y >nul
+exit /b 0
