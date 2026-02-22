@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOT_DIR="$(builtin cd "$(dirname "${BASH_SOURCE:-${(%):-%N}}")" && pwd)"
-DOT_REPO="https://github.com/tenchanome/dotfiles.git"
+DOT_REPO="https://github.com/shnaki/dotfiles.git"
 DOT_SCR="${HOME}/.dot"
 
 echo "-------------------------"
