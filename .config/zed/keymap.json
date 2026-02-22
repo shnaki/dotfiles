@@ -1,0 +1,128 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    },
+  },
+  // ----------------------------
+  // 削除時のヤンクをオフ
+  // ----------------------------
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "x": ["workspace::SendKeystrokes", "\" _ x"],
+      "d": ["workspace::SendKeystrokes", "\" _ d"],
+    },
+  },
+  // ----------------------------
+  // Visual: インデントを連続適用（<gv / >gv）
+  // ----------------------------
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "<": ["workspace::SendKeystrokes", "< g v"],
+      ">": ["workspace::SendKeystrokes", "> g v"],
+    },
+  },
+  // ----------------------------
+  // Insert: bash風キーマップ（できるだけ近似）
+  // ----------------------------
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-a": ["workspace::SendKeystrokes", "home"],
+      "ctrl-e": ["workspace::SendKeystrokes", "end"],
+      "ctrl-b": ["workspace::SendKeystrokes", "left"],
+      "ctrl-f": ["workspace::SendKeystrokes", "right"],
+      "ctrl-h": ["workspace::SendKeystrokes", "backspace"],
+      "ctrl-d": ["workspace::SendKeystrokes", "delete"],
+
+      // 近似: 行末まで削除（選択→削除）
+      "ctrl-k": ["workspace::SendKeystrokes", "shift-end delete"],
+      // 近似: 行頭まで削除
+      "ctrl-u": ["workspace::SendKeystrokes", "shift-home backspace"],
+      // 近似: 1単語削除（環境により ctrl-backspace が効く）
+      "ctrl-w": ["workspace::SendKeystrokes", "ctrl-backspace"],
+    },
+  },
+  // ----------------------------
+  // Ctrl-n / Ctrl-p でタブ移動
+  // ----------------------------
+  // {
+  //   "bindings": {
+  //     "ctrl-n": null,
+  //   },
+  // },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "ctrl-n": "window::ShowNextWindowTab",
+      "ctrl-p": "window::ShowPreviousWindowTab",
+    },
+  },
+  // ----------------------------
+  // goto 系
+  // gc: “クラスへ” → Outline/シンボル系が近い（衝突注意）
+  // gf: ファイルへ
+  // gs: シンボルへ（プロジェクト全体）
+  // ga: アクションへ → Command Palette
+  // ----------------------------
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "g c": "outline::Toggle",
+      "g f": "file_finder::Toggle",
+      "g s": "project_symbols::Toggle",
+      "g a": "command_palette::Toggle",
+    },
+  },
+  // ----------------------------
+  // Ctrl-h: エラー表示（LSP hover / もしくはステータスバー）
+  // ----------------------------
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "ctrl-h": "editor::Hover",
+    },
+  },
+  // ----------------------------
+  // ]c / [c: 変更箇所（diff hunk）へジャンプ
+  // ----------------------------
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "] c": "editor::GoToNextChange",
+      "[ c": "editor::GoToPreviousChange",
+    },
+  },
+  // ----------------------------
+  // ドック操作
+  // ----------------------------
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-g h": "workspace::ActivatePaneLeft",
+      "ctrl-g l": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "vim_mode == literal",
+    "bindings": {
+      "ctrl-p": null
+    }
+  }
+]

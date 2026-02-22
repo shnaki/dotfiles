@@ -34,3 +34,6 @@ EOF
 
 dot_main -c "${temp_config}" set --force --verbose
 
+if [ -f "${DOT_DIR}/etc/init_zed.sh" ]; then
+    sh "${DOT_DIR}/etc/init_zed.sh"
+fi

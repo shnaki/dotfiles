@@ -1,0 +1,50 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "icon_theme": "Material Icon Theme",
+  "wsl_connections": [
+    {
+      "distro_name": "Ubuntu-24.04",
+      "user": null,
+      "projects": [],
+    },
+  ],
+  "git_panel": {
+    "tree_view": true,
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "session": {
+    "trust_all_worktrees": true,
+  },
+  "vim_mode": true,
+  "base_keymap": "JetBrains",
+  "ui_font_size": 16,
+  "buffer_font_size": 12,
+  "buffer_font_weight": 400,
+  "buffer_line_height": "comfortable",
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark",
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  "search_wrap": false,
+  "use_smartcase_search": true,
+  "autosave": { "after_delay": { "milliseconds": 800 } },
+  "vim": {
+    "use_smartcase_find": true,
+    "use_system_clipboard": "on_yank",
+  },
+}
