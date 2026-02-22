@@ -49,7 +49,7 @@ ZED_CONFIG_DIR="${APPDATA_DIR}/Zed"
 
 mkdir -p "${ZED_CONFIG_DIR}"
 
-link_or_copy() {
+link_only() {
     local src="$1"
     local dst="$2"
 
@@ -58,9 +58,9 @@ link_or_copy() {
         return 0
     fi
 
-    cp -f "${src}" "${dst}"
-    echo "copied: ${dst}"
+    echo "failed to link: ${dst}" >&2
+    return 1
 }
 
-link_or_copy "${DOT_DIR}/.config/zed/settings.json" "${ZED_CONFIG_DIR}/settings.json"
-link_or_copy "${DOT_DIR}/.config/zed/keymap.json" "${ZED_CONFIG_DIR}/keymap.json"
+link_only "${DOT_DIR}/.config/zed/settings.json" "${ZED_CONFIG_DIR}/settings.json"
+link_only "${DOT_DIR}/.config/zed/keymap.json" "${ZED_CONFIG_DIR}/keymap.json"

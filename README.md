@@ -29,11 +29,16 @@ bash ./install.sh
 
 ## Windows 向け補助
 
-Windows で手動リンク作成を行う場合は `etc/mklink.bat` を利用できます。
+Windows では `etc/mklink.bat` でリンクを作成します（コピーは行いません）。
+
+- ファイル: ハードリンク優先（失敗時はシンボリックリンク）
+- ディレクトリ: ジャンクション優先（失敗時はシンボリックリンク）
 
 ```bat
 etc\mklink.bat
 ```
+
+一度リンクを作成すれば、`git pull` で dotfiles 側が更新されたときに実体も自動で最新版になります。
 
 ## Zed 設定の管理
 
@@ -53,7 +58,7 @@ etc\mklink.bat
 bash ./etc/init_zed.sh
 ```
 
-`init_zed.sh` は symlink 作成を優先し、失敗時は copy で反映します。
+`init_zed.sh` はリンクのみ作成します（copy はしません）。
 
 ## 更新手順
 
