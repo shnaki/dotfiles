@@ -10,6 +10,8 @@
     "context": "Workspace",
     "bindings": {
       // "shift shift": "file_finder::Toggle"
+      "ctrl-n": null,
+      "ctrl-p": null,
     },
   },
   {
@@ -57,21 +59,18 @@
       "ctrl-u": ["workspace::SendKeystrokes", "shift-home backspace"],
       // 近似: 1単語削除（環境により ctrl-backspace が効く）
       "ctrl-w": ["workspace::SendKeystrokes", "ctrl-backspace"],
+      "ctrl-n": "pane::ActivateNextItem",
+      "ctrl-p": "pane::ActivatePreviousItem",
     },
   },
   // ----------------------------
-  // Ctrl-n / Ctrl-p でタブ移動
+  // Ctrl-n / Ctrl-p で現在ペイン内タブ移動
   // ----------------------------
-  // {
-  //   "bindings": {
-  //     "ctrl-n": null,
-  //   },
-  // },
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "Editor && vim_mode == normal && !menu",
     "bindings": {
-      "ctrl-n": "window::ShowNextWindowTab",
-      "ctrl-p": "window::ShowPreviousWindowTab",
+      "ctrl-n": "pane::ActivateNextItem",
+      "ctrl-p": "pane::ActivatePreviousItem",
     },
   },
   // ----------------------------
@@ -100,7 +99,7 @@
     },
   },
   // ----------------------------
-  // ]c / [c: 変更箇所（diff hunk）へジャンプ
+  // ]c / [c: 変更箇所へジャンプ
   // ----------------------------
   {
     "context": "Editor && vim_mode == normal",
@@ -119,10 +118,4 @@
       "ctrl-g l": "workspace::ActivatePaneRight",
     },
   },
-  {
-    "context": "vim_mode == literal",
-    "bindings": {
-      "ctrl-p": null
-    }
-  }
 ]
