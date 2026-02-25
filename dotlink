@@ -11,3 +11,5 @@
 .zshrc,.zshrc
 .config/zed/settings.json,AppData/Roaming/Zed/settings.json
 .config/zed/keymap.json,AppData/Roaming/Zed/keymap.json
+.config/Code/User/settings.json,.config/Code/User/settings.json
+.config/Code/User/keybindings.json,.config/Code/User/keybindings.json

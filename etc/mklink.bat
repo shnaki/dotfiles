@@ -20,6 +20,10 @@ call :link_or_copy_dir "%APPDATA_DIR%\alacritty" "%DOTFILES_DIR%\.config\alacrit
 call :link_or_copy_file "%APPDATA_DIR%\Zed\settings.json" "%DOTFILES_DIR%\.config\zed\settings.json"
 call :link_or_copy_file "%APPDATA_DIR%\Zed\keymap.json" "%DOTFILES_DIR%\.config\zed\keymap.json"
 
+if not exist "%APPDATA_DIR%\Code\User" mkdir "%APPDATA_DIR%\Code\User"
+call :link_or_copy_file "%APPDATA_DIR%\Code\User\settings.json" "%DOTFILES_DIR%\.config\Code\User\settings.json"
+call :link_or_copy_file "%APPDATA_DIR%\Code\User\keybindings.json" "%DOTFILES_DIR%\.config\Code\User\keybindings.json"
+
 echo done
 exit /b 0
 

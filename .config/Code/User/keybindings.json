@@ -1,0 +1,70 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpenNavigateNextInFilePicker",
+    "when": "inFilesPicker && inQuickOpen",
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen",
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile",
+  },
+  {
+    "key": "ctrl+h",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && vim.mode == 'Normal'",
+  },
+  {
+    "key": "ctrl+q",
+    "command": "editor.action.peekDefinition",
+    "when": "editorTextFocus && vim.mode == 'Normal'",
+  },
+  {
+    "key": "ctrl+alt+z",
+    "command": "git.revertSelectedRanges",
+    "when": "editorTextFocus && vim.mode == 'Normal'",
+  },
+  {
+    "key": "ctrl+shift+alt+l",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
+  },
+  {
+    "key": "shift+alt+f",
+    "command": "-editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
+  },
+  {
+    "key": "ctrl+shift+alt+l",
+    "command": "-workbench.action.quickchat.toggle",
+    "when": "chatIsEnabled",
+  },
+  {
+    "key": "ctrl+shift+alt+l",
+    "command": "editor.action.formatSelection",
+    "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly",
+  },
+  {
+    "key": "ctrl+k ctrl+f",
+    "command": "-editor.action.formatSelection",
+    "when": "editorHasDocumentSelectionFormattingProvider && editorTextFocus && !editorReadonly",
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.showAllSymbols"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "-editor.action.copyLinesDownAction",
+    "when": "editorTextFocus && !editorHasSelection && !editorReadonly"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  }
+]

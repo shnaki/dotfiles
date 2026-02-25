@@ -1,0 +1,98 @@
+{
+  "workbench.editor.empty.hint": "hidden",
+  "terminal.integrated.initialHint": false,
+  "editor.minimap.enabled": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+  },
+  "files.autoSave": "afterDelay",
+  "git.enableSmartCommit": true,
+  "vim.useSystemClipboard": true,
+  "vim.handleKeys": {
+    "<C-d>": true,
+    "<C-s>": false,
+    "<C-z>": false,
+  },
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["g", "f"],
+      "commands": ["workbench.action.quickOpen"],
+    },
+    {
+      "before": ["<C-n>"],
+      "after": ["g", "t"],
+    },
+    {
+      "before": ["<C-p>"],
+      "after": ["g", "T"],
+    },
+    {
+      "before": ["<C-k>"],
+      "commands": ["workbench.view.scm"],
+    },
+    {
+      "before": ["]", "c"],
+      "commands": ["workbench.action.editor.nextChange"],
+    },
+    {
+      "before": ["[", "c"],
+      "commands": ["workbench.action.editor.previousChange"],
+    },
+  ],
+  "explorer.confirmDelete": false,
+  "editor.formatOnSave": true,
+  "files.eol": "\n",
+  "python.createEnvironment.trigger": "off",
+  "python.venvPath": ".venv",
+  "ruff.enable": true,
+  "ruff.lint.enable": true,
+  "ruff.nativeServer": true,
+  "python.analysis.typeCheckingMode": "standard",
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+    },
+  },
+  "eslint.format.enable": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "[go]": {
+    "editor.defaultFormatter": "golang.go",
+    "editor.codeActionsOnSave": { "source.organizeImports": "explicit" },
+  },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml",
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+  },
+  "git.autofetch": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "redhat.telemetry.enabled": false,
+  "aws.cloudformation.telemetry.enabled": false,
+  "aws.telemetry": false,
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+  },
+}
