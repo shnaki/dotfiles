@@ -99,28 +99,13 @@
     },
   },
   // ----------------------------
-  // Ctrl-q: クイックドキュメンテーション
-  // ----------------------------
-  // {
-  //   "context": "(VimControl && !menu)",
-  //   "bindings": {
-  //     "ctrl-q": null,
-  //   },
-  // },
-  {
-    "context": "Editor && vim_mode == normal",
-    "bindings": {
-      "ctrl-q": "editor::OpenDocs",
-    },
-  },
-  // ----------------------------
   // ]c / [c: 変更箇所へジャンプ
   // ----------------------------
   {
     "context": "Editor && vim_mode == normal",
     "bindings": {
-      "] c": "editor::GoToNextChange",
-      "[ c": "editor::GoToPreviousChange",
+      "] c": "editor::GoToHunk",
+      "[ c": "editor::GoToPreviousHunk",
     },
   },
   // ----------------------------

@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": "JetBrains New UI Icons (Dark)",
   "wsl_connections": [
     {
       "distro_name": "Ubuntu-24.04",
@@ -32,7 +32,7 @@
   "buffer_font_weight": 400,
   "buffer_line_height": "comfortable",
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
     "dark": "One Dark",
   },
