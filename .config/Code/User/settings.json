@@ -1,4 +1,5 @@
 {
+  "workbench.editor.enablePreview": false,
   "workbench.editor.empty.hint": "hidden",
   "terminal.integrated.initialHint": false,
   "editor.minimap.enabled": false,

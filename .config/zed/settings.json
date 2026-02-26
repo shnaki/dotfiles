@@ -40,6 +40,9 @@
     "file_icons": true,
     "git_status": true,
   },
+  "preview_tabs": {
+    "enabled": false,
+  },
   "search_wrap": false,
   "use_smartcase_search": true,
   "autosave": { "after_delay": { "milliseconds": 800 } },
