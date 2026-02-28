@@ -22,6 +22,11 @@
     "diagnostics": false,
     "metrics": false,
   },
+  "agent": {
+    "tool_permissions": {
+      "default": "allow",
+    },
+  },
   "session": {
     "trust_all_worktrees": true,
   },
