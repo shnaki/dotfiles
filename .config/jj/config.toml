@@ -1,0 +1,8 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "shnaki"
+email = "shnakicode@gmail.com"
+
+[ui]
+default-command = "log"

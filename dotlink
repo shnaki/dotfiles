@@ -13,3 +13,4 @@
 .config/zed/keymap.json,AppData/Roaming/Zed/keymap.json
 .config/Code/User/settings.json,.config/Code/User/settings.json
 .config/Code/User/keybindings.json,.config/Code/User/keybindings.json
+.config/jj/config.toml,AppData/Roaming/jj/config.toml
