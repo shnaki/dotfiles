@@ -6,6 +6,7 @@ email = "shnakicode@gmail.com"
 
 [ui]
 default-command = "log"
+editor = "vim"
 
 [working-copy]
 eol-conversion = "input"
