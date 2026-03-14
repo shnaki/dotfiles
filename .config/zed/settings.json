@@ -55,4 +55,7 @@
     "use_smartcase_find": true,
     "use_system_clipboard": "always",
   },
+  "inlay_hints": {
+    "enabled": true,
+  },
 }
